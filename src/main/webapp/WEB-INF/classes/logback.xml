@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+	<property name="pattern" value="%d{yyyyMMdd:HH:mm:ss.SSS} [%thread] %-5level  %msg%n" />
+	<property name="log.outdir" value="e:/logs" />
+		
+	<!-- 如果不需要在标准控制台打印日志信息，请在logger中去掉对STDOUT的引用 -->
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${pattern}</pattern>
+        </layout>
+    </appender>
+    
+    <!--
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.outdir}/euptrans.%i.log.%d{yyyy-MM-dd}</FileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>1KB</maxFileSize>
+				<MaxHistory>5</MaxHistory>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%X{RequestNo} - %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}[%L] - %msg%n</pattern>
+		</encoder>
+	</appender>
+  	-->
+  	
+	<!-- log4jdbc sql & jdbc logging -->
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="jdbc.audit" additivity="false">
+	<level value="OFF" />
+	</logger>
+	
+	<logger name="jdbc.resultset" additivity="false">
+	<level value="OFF" />
+	</logger>
+	
+	<logger name="jdbc.connection" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<!-- 
+	<logger name="net.ttddyy.dsproxy.listener.SLF4JQueryLoggingListener" additivity="false">
+	<level value="DEBUG" />
+	<appender-ref ref="STDOUT" />
+	</logger>
+	 -->
+	 
+	 <logger name="performanceMonitor" additivity="false" >
+	 	<level value="TRACE" />
+	 	<appender-ref ref="STDOUT" />
+	 </logger>
+	 
+	 <logger name="TestRollingFileAppenderLog" additivity="false">
+	 	<level value="INFO" />
+	 	<appender-ref ref="STDOUT" />
+	 </logger>
+	 
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
