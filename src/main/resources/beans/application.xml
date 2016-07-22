@@ -19,7 +19,7 @@
     <context:property-placeholder location="classpath:*.properties" />
        
  	<!-- 扫描根目录 -->
-	<context:component-scan base-package="club.floatin.config,club.floatin.base,club.floatin.weixin,com.mmdam.weixin" />
+	<context:component-scan base-package="club.hoy.config,club.hoy.base,club.hoy.weixin" />
 	
 	
 	<!-- 以下信息应该放到另一个配置文件中，以便于打包 -->

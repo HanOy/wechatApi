@@ -55,7 +55,7 @@
   		<property name="configLocation" value="/WEB-INF/classes/mybatis-config.xml" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-       	<property name="basePackage" value="" />
+       	<property name="basePackage" value="club.hoy.dao" />
    	</bean>
    	
    	<!-- 事务管理 -->
@@ -87,7 +87,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:advisor advice-ref="tx-Advice" pointcut="execution(*)" />
+		<aop:advisor advice-ref="tx-Advice" pointcut="execution(* club.hoy.service..*.*(..))" />
 	</aop:config>
    	
 	
