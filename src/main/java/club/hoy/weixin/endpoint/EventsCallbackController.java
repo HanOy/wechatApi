@@ -10,8 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,7 +46,6 @@ public class EventsCallbackController {
 
     private Map<String, Pair<EVENT_TYPE, EventHandler>> eventHandlers;
 
-    @Resource
     public void setEventHandlers(List<EventHandler> events) {
         eventHandlers = new HashMap<String, Pair<EVENT_TYPE, EventHandler>>();
         for (EventHandler handler : events) {
