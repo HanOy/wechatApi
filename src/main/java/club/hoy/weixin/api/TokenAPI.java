@@ -15,12 +15,9 @@ public class TokenAPI extends BaseAPI{
 	 * @return
 	 */
 	public static Token token(String appid,String secret){
-		HttpUriRequest httpUriRequest = RequestBuilder.post()
-				.setUri(BASE_URI + "/cgi-bin/token")
-				.addParameter("grant_type","client_credential")
-				.addParameter("appid", appid)
-				.addParameter("secret", secret)
-				.build();
+	    HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/cgi-bin/token?grant_type=client_credential&appid="+appid+"&secret="+secret+"")
+                .build();
 		return LocalHttpClient.executeJsonResult(httpUriRequest,Token.class);
 	}
 
