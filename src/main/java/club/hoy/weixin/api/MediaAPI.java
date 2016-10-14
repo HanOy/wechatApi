@@ -127,10 +127,8 @@ public class MediaAPI extends BaseAPI{
 	 * @return
 	 */
 	public static byte[] mediaGet(String access_token,String media_id){
-		HttpUriRequest httpUriRequest = RequestBuilder.post()
-					.setUri(BASE_URI+"/cgi-bin/media/get")
-					.addParameter("access_token", access_token)
-					.addParameter("media_id", media_id)
+		HttpUriRequest httpUriRequest = RequestBuilder.get()
+					.setUri(BASE_URI+"/cgi-bin/media/get?access_token=" + access_token + "&media_id=" + media_id + "")
 					.build();
 		HttpResponse httpResponse = LocalHttpClient.execute(httpUriRequest);
 		try {
